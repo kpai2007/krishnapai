@@ -4,120 +4,97 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Krishna Pai V | Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Inter', sans-serif;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #2c3e50;
     }
-    html {
-      scroll-behavior: smooth;
+    header {
+      background: #1e272e;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    .container {
+      padding: 1.5rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+    h2 {
+      border-bottom: 2px solid #1e272e;
+      padding-bottom: 0.4rem;
+      font-size: 1.5rem;
+    }
+    .project, .content {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      margin: 1rem 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+    }
+    footer {
+      text-align: center;
+      background: #1e272e;
+      color: white;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+    a {
+      color: #3498db;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
-<body class="bg-white text-gray-900">
+<body>
 
-  <!-- Navigation Bar -->
-  <header class="bg-white shadow fixed w-full z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <div class="text-xl font-bold">Krishna Pai V</div>
-      <nav class="hidden md:flex space-x-6 font-medium text-sm">
-        <a href="#about" class="hover:text-blue-600">About</a>
-        <a href="#projects" class="hover:text-blue-600">Projects</a>
-        <a href="#skills" class="hover:text-blue-600">Skills</a>
-        <a href="#contact" class="hover:text-blue-600">Contact</a>
-        <a href="https://www.youtube.com/@scispectiveofficial" target="_blank" class="hover:text-blue-600">SciSpective</a>
-      </nav>
-    </div>
+  <header>
+    <h1>Krishna Pai V</h1>
+    <p>Physics Student | Science Communicator</p>
   </header>
 
-  <!-- Hero Section -->
-  <section class="pt-32 pb-20 bg-gray-50 text-center">
-    <div class="max-w-3xl mx-auto px-4">
-      <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">Hi, I'm Krishna Pai V</h1>
-      <p class="text-lg text-gray-600 mb-6">
-        Physics Student • Science Communicator • Creator of 
-        <a href="https://www.youtube.com/@scispectiveofficial" class="text-blue-600 underline" target="_blank">SciSpective</a>
-      </p>
-      <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-full font-medium shadow hover:bg-blue-700 transition">Let's Connect</a>
-    </div>
-  </section>
+  <div class="container">
 
-  <!-- About Section -->
-  <section id="about" class="py-20 bg-white">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-6">About Me</h2>
-      <p class="text-gray-700 text-lg leading-relaxed">
-        I'm a BSc Physics student at The Cochin College with a passion for simplifying complex scientific ideas. Through my YouTube channel, <strong>SciSpective</strong>, I create engaging, story-driven videos that help people understand and enjoy physics. I combine creativity, education, and digital content to make science accessible and fun.
-      </p>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="py-20 bg-gray-50">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-12">Projects</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold mb-2">SciSpective</h3>
-          <p class="text-gray-600 mb-4">An educational YouTube channel where I explain physics concepts using animations, stories, and visuals.</p>
-          <a href="https://www.youtube.com/@scispectiveofficial" class="text-blue-600 font-medium hover:underline" target="_blank">Visit Channel →</a>
-        </div>
-        <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold mb-2">Content Development</h3>
-          <p class="text-gray-600 mb-4">Created video scripts and researched content for topics like relativity, quantum physics, and black holes.</p>
-          <span class="text-gray-400 text-sm">2024 – Present</span>
-        </div>
-        <div class="bg-white rounded-xl shadow p-6 hover:shadow-lg transition">
-          <h3 class="text-xl font-semibold mb-2">Portfolio Website</h3>
-          <p class="text-gray-600 mb-4">This site was built to showcase my work, background, and passion for science communication.</p>
-          <a href="#contact" class="text-blue-600 font-medium hover:underline">Contact Me →</a>
-        </div>
+    <section>
+      <h2>About Me</h2>
+      <div class="content">
+        <p>Hello! I’m Krishna Pai V, a B.Sc. Physics student at The Cochin College with a deep passion for science communication and discovery.</p>
+        <p>I founded <strong>SciSpective</strong>, a YouTube platform where I break down fascinating physics topics into visual, cinematic stories for everyone to enjoy and learn from.</p>
+        <p>My goal is to inspire curiosity, build scientific awareness, and one day contribute meaningfully to the field of physics and education.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Skills Section -->
-  <section id="skills" class="py-20 bg-white">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-10">Skills</h2>
-      <div class="flex flex-wrap justify-center gap-4">
-        <span class="bg-gray-200 px-5 py-2 rounded-full">Science Communication</span>
-        <span class="bg-gray-200 px-5 py-2 rounded-full">YouTube Content Creation</span>
-        <span class="bg-gray-200 px-5 py-2 rounded-full">Physics Explanation</span>
-        <span class="bg-gray-200 px-5 py-2 rounded-full">Video Editing</span>
-        <span class="bg-gray-200 px-5 py-2 rounded-full">Python</span>
-        <span class="bg-gray-200 px-5 py-2 rounded-full">HTML & CSS</span>
-        <span class="bg-gray-200 px-5 py-2 rounded-full">Script Writing</span>
-        <span class="bg-gray-200 px-5 py-2 rounded-full">Public Speaking</span>
+    <section>
+      <h2>Projects</h2>
+
+      <div class="project">
+        <h3>SciSpective (YouTube)</h3>
+        <p>A science storytelling channel that presents complex physics concepts like Quantum Tunneling, Sonoluminescence, and Black Holes using animations, analogies, and real-life parallels.</p>
+        <p><a href="https://www.youtube.com/@scispectiveofficial" target="_blank">Visit Channel &rarr;</a></p>
       </div>
-    </div>
-  </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-20 bg-gray-50">
-    <div class="max-w-3xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-6">Contact Me</h2>
-      <p class="text-gray-600 mb-6">
-        Want to collaborate or ask a question? Fill the form below or email me at 
-        <a href="mailto:your@email.com" class="text-blue-600 underline">your@email.com</a>.
-      </p>
-      <form class="grid gap-4 text-left">
-        <input type="text" placeholder="Your Name" class="p-3 border rounded w-full" required>
-        <input type="email" placeholder="Your Email" class="p-3 border rounded w-full" required>
-        <textarea rows="5" placeholder="Your Message" class="p-3 border rounded w-full" required></textarea>
-        <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded font-medium hover:bg-blue-700 transition">Send Message</button>
-      </form>
-    </div>
-  </section>
+      <div class="project">
+        <h3>Video Research & Writing</h3>
+        <p>Researched and scripted original educational content on physics phenomena and theories for short-form videos with a cinematic and conceptual touch.</p>
+      </div>
 
-  <!-- Footer -->
-  <footer class="bg-white border-t py-6 text-center text-sm text-gray-500">
-    <p>© 2025 Krishna Pai V • All rights reserved</p>
-    <div class="mt-2 space-x-4">
-      <a href="https://www.youtube.com/@scispectiveofficial" target="_blank" class="text-blue-600 hover:underline">YouTube</a>
-    </div>
-  </footer>
+     
 
-</body>
-          </html>
+    </section>
+
+    <section
