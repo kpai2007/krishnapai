@@ -1,247 +1,126 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Updated: Your Name and Title -->
-    <title>Krishna Pai V | Physics Student & Science Content Creator</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Lucide Icons for aesthetic -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>Solar-Powered Smart Farming | Krishna Pai</title>
     <style>
-        /* Set up a dark background for the entire application (Mobile-first dark theme) */
-        body {
-            background-color: #0d1117; /* GitHub Dark Mode background */
-            color: #c9d1d9; /* Light gray text */
+        :root {
+            --primary: #2c3e50;
+            --accent: #27ae60;
+            --bg: #f4f7f6;
         }
-        /* Style for section titles */
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: #3b82f6; /* Blue-500 */
-            margin-top: 8px;
-            border-radius: 9999px;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: var(--primary);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 10px;
+            font-size: 24px;
+        }
+        h2 {
+            font-size: 18px;
+            color: var(--accent);
+            margin-top: 30px;
+        }
+        .meta {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .card {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 15px;
+        }
+        a {
+            color: #2980b9;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 12px;
+            color: #888;
         }
     </style>
 </head>
 <body>
 
-    <!-- Main Container - Centered and Responsive -->
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="container">
+    <h1>Solar-Powered Smart Farming With Energy Analytics</h1>
+    <p class="meta">Case Study by Krishna Pai V, BSc Physics (First Year), The Cochin College</p>
 
-        <!-- Header and Navigation -->
-        <header class="flex justify-between items-center py-4 border-b border-gray-700/50 mb-12 sticky top-0 z-10 bg-[#0d1117]/90 backdrop-blur-sm rounded-b-xl">
-            <!-- Updated: Your Name -->
-            <h1 class="text-2xl font-bold text-blue-400">Krishna Pai V</h1>
-            
-            <!-- Desktop Navigation -->
-            <nav class="hidden sm:flex space-x-6 text-sm font-medium">
-                <a href="#about" class="hover:text-blue-400 transition">About</a>
-                <a href="#skills" class="hover:text-blue-400 transition">Skills</a>
-                <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
-                <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
-            </nav>
+    <h2>Project Abstract</h2>
+    <p>
+        This interdisciplinary project integrates <strong>IoT technology</strong> and <strong>Energy Analytics</strong> to solve the agricultural crisis in Kerala. By using an ESP32-based system powered by solar energy, we automate irrigation for high-value crops like Pepper, Nutmeg, and Paddy.
+    </p>
 
-            <!-- Mobile Menu Placeholder -->
-            <button class="sm:hidden text-gray-400 hover:text-blue-400 transition">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button>
-        </header>
-
-        <!-- 1. HERO SECTION -->
-        <section id="hero" class="text-center py-16 sm:py-24 space-y-6">
-            <p class="text-blue-400 text-lg font-semibold">Hello, I am</p>
-            <!-- Updated: Your Name -->
-            <h2 class="text-5xl sm:text-7xl font-extrabold text-white">
-                Krishna Pai V.
-            </h2>
-            <!-- Updated: Your Job Title/Focus -->
-            <h3 class="text-3xl sm:text-5xl font-bold text-gray-400">
-                I explain complex science concepts simply.
-            </h3>
-            <!-- Updated: Concise Bio -->
-            <p class="max-w-2xl mx-auto text-gray-400 mt-4 leading-relaxed">
-                I'm a **Physics Student** specializing in Medical Physics, dedicated to blending academic research with public outreach. My work spans from C/C++ electronics prototyping to creating engaging science content.
-            </p>
-            <a href="#projects" class="inline-block bg-blue-600 text-white font-semibold py-3 px-8 mt-6 rounded-xl shadow-lg hover:bg-blue-700 transition duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
-                View My Creations
-            </a>
-        </section>
-
-        <!-- Divider -->
-        <hr class="border-gray-700 my-16">
-
-        <!-- 2. ABOUT ME SECTION -->
-        <section id="about" class="py-12 sm:py-16">
-            <h2 class="section-title text-4xl font-bold mb-10">About Me</h2>
-            <div class="flex flex-col gap-8">
-                <!-- IMPORTANT CHANGE: Removed the md:w-3/5 class and the image placeholder entirely. Text takes full width. -->
-                <div class="space-y-4 text-gray-400 leading-relaxed">
-                    <!-- Updated: Detailed Bio (Paragraph 1 - Academic Focus) -->
-                    <p>
-                        I'm currently pursuing a **BSc Physics (Hons.)** with a specialization in **Medical Physics**. I am fascinated by how physical principles are applied in clinical settings and diagnostics. My current studies involve extensive theoretical modeling and practical implementation, often utilizing tools like **Python** for simulations and data handling.
-                    </p>
-                    <!-- Updated: Detailed Bio (Paragraph 2 - Content Focus) -->
-                    <p>
-                        My passion for clarity extends beyond the classroom. I operate **SciSpective**, a YouTube channel dedicated to making dense physics and astrophysics topics accessible and engaging for a global audience. This creative work strengthens my skills in research, visual communication, and effective storytelling.
-                    </p>
-                    <p>
-                        My current hands-on technical focus includes:
-                    </p>
-                    <!-- Updated: Core Tech Stack List -->
-                    <ul class="grid grid-cols-2 gap-2 text-sm font-mono text-blue-300">
-                        <li><i data-lucide="chevrons-right" class="inline-block w-4 h-4 mr-1"></i> Python (Data/Simulation)</li>
-                        <li><i data-lucide="chevrons-right" class="inline-block w-4 h-4 mr-1"></i> Arduino / C/C++</li>
-                        <li><i data-lucide="chevrons-right" class="inline-block w-4 h-4 mr-1"></i> Raspberry Pi & Linux</li>
-                        <li><i data-lucide="chevrons-right" class="inline-block w-4 h-4 mr-1"></i> Physics & Astrophysics</li>
-                        <li><i data-lucide="chevrons-right" class="inline-block w-4 h-4 mr-1"></i> Canva & Premiere Pro</li>
-                        <li><i data-lucide="chevrons-right" class="inline-block w-4 h-4 mr-1"></i> Medical Physics</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Divider -->
-        <hr class="border-gray-700 my-16">
-
-        <!-- 3. SKILLS/EXPERIENCE SECTION (Core Competency Chips) -->
-        <section id="skills" class="py-12 sm:py-16 text-center">
-            <h2 class="section-title mx-auto text-4xl font-bold mb-10">Core Competencies</h2>
-            <div class="flex flex-wrap justify-center gap-3">
-                <!-- Updated: Key skills related to your profile -->
-                <span class="skill-chip bg-gray-700/50 text-blue-300 px-4 py-2 rounded-full text-sm font-medium shadow-md transition hover:bg-gray-600">Physics Modeling</span>
-                <span class="skill-chip bg-gray-700/50 text-blue-300 px-4 py-2 rounded-full text-sm font-medium shadow-md transition hover:bg-gray-600">Science Communication</span>
-                <span class="skill-chip bg-gray-700/50 text-blue-300 px-4 py-2 rounded-full text-sm font-medium shadow-md transition hover:bg-gray-600">Python Scripting</span>
-                <span class="skill-chip bg-gray-700/50 text-blue-300 px-4 py-2 rounded-full text-sm font-medium shadow-md transition hover:bg-gray-600">C/C++ & Arduino</span>
-                <span class="skill-chip bg-gray-700/50 text-blue-300 px-4 py-2 rounded-full text-sm font-medium shadow-md transition hover:bg-gray-600">Video Production</span>
-                <span class="skill-chip bg-gray-700/50 text-blue-300 px-4 py-2 rounded-full text-sm font-medium shadow-md transition hover:bg-gray-600">Medical Physics Theory</span>
-            </div>
-        </section>
-
-        <!-- Divider -->
-        <hr class="border-gray-700 my-16">
-
-        <!-- 4. PROJECTS SECTION -->
-        <section id="projects" class="py-12 sm:py-16">
-            <h2 class="section-title text-4xl font-bold mb-10">Creations & Projects</h2>
-            
-            <div class="space-y-12">
-                
-                <!-- Updated: PROJECT CARD 1 (SciSpective) -->
-                <div class="project-card bg-gray-800/50 p-6 rounded-xl shadow-xl border border-gray-700/50 transition duration-300 hover:shadow-red-500/20 hover:border-red-500/50">
-                    <div class="flex items-start justify-between">
-                        <div>
-                            <h3 class="text-2xl font-semibold text-white mb-2">SciSpective (YouTube Science Channel)</h3>
-                            <!-- Updated Tech Stack -->
-                            <p class="text-sm text-red-400 font-mono mb-4">Canva, Adobe Premiere Pro, Physics Simulations, Scripting</p>
-                        </div>
-                        <div class="flex space-x-3">
-                             <!-- YouTube Icon Link -->
-                             <a href="https://www.youtube.com/@scispectiveofficial" target="_blank" class="text-gray-400 hover:text-red-400 transition" title="YouTube Channel">
-                                <i data-lucide="youtube" class="w-6 h-6"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Updated Project Description -->
-                    <p class="text-gray-400 leading-relaxed">
-                        I create engaging physics and astrophysics explainers to simplify complex scientific concepts for students and the general audience. This involves deep research, simplifying difficult jargon, and producing high-quality visual content.
-                    </p>
-                </div>
-
-                <!-- Updated: PROJECT CARD 2 (Raspberry Pi) -->
-                <div class="project-card bg-gray-800/50 p-6 rounded-xl shadow-xl border border-gray-700/50 transition duration-300 hover:shadow-green-500/20 hover:border-green-500/50">
-                    <div class="flex items-start justify-between">
-                        <div>
-                            <h3 class="text-2xl font-semibold text-white mb-2">Raspberry Pi Mini Computer Setup</h3>
-                            <!-- Updated Tech Stack -->
-                            <p class="text-sm text-green-400 font-mono mb-4">Raspberry Pi OS, Python, GPIO, Linux</p>
-                        </div>
-                        <!-- Removed GitHub link -->
-                    </div>
-                    <!-- Updated Project Description -->
-                    <p class="text-gray-400 leading-relaxed">
-                        Converted a Raspberry Pi 4 Model B into a full mini-PC setup for experiments, coding, and electronics prototyping. This project involved extensive Linux configuration and using Python for hardware interaction via GPIO pins.
-                    </p>
-                </div>
-
-                <!-- Updated: PROJECT CARD 3 (Arduino Logger) -->
-                <div class="project-card bg-gray-800/50 p-6 rounded-xl shadow-xl border border-gray-700/50 transition duration-300 hover:shadow-blue-500/20 hover:border-blue-500/50">
-                    <div class="flex items-start justify-between">
-                        <div>
-                            <h3 class="text-2xl font-semibold text-white mb-2">Arduino Ultrasonic Distance Logger</h3>
-                            <!-- Updated Tech Stack -->
-                            <p class="text-sm text-blue-400 font-mono mb-4">Arduino UNO, HC-SR04, C/C++, Serial Monitor</p>
-                        </div>
-                        <!-- Removed GitHub link -->
-                    </div>
-                    <!-- Updated Project Description -->
-                    <p class="text-gray-400 leading-relaxed">
-                        Built a distance-measurement system using an ultrasonic sensor and `pulseIn()` to measure object distance accurately. The project required writing low-level C/C++ code for precise sensor timing and outputting data to the serial monitor.
-                    </p>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Divider -->
-        <hr class="border-gray-700 my-16">
-
-        <!-- 5. CONTACT SECTION -->
-        <section id="contact" class="py-12 sm:py-16 text-center">
-            <p class="text-blue-400 font-semibold mb-4 text-lg">Connect</p>
-            <h2 class="text-5xl font-extrabold text-white mb-6">Let's Talk Science or Tech</h2>
-            <p class="max-w-xl mx-auto text-gray-400 leading-relaxed mb-10">
-                I'm always open to discussing research ideas, new projects, or science communication collaborations. Feel free to reach out using the links below!
-            </p>
-            <!-- Corrected Mailto Link -->
-            <a href="mailto:mr.kpai.official@gmail.com" class="inline-block bg-transparent border-2 border-blue-600 text-blue-400 font-semibold py-3 px-8 rounded-xl hover:bg-blue-600 hover:text-white transition duration-300">
-                Send an Email
-            </a>
-        </section>
-
-        <!-- Footer -->
-        <footer class="py-8 text-center border-t border-gray-700/50 mt-12">
-            <!-- Updated: Footer Name and Year -->
-            <p class="text-sm text-gray-500">Designed & Built by Krishna Pai V (2025)</p>
-            <div class="flex justify-center space-x-4 mt-4">
-                <!-- YouTube Link -->
-                <a href="https://www.youtube.com/@scispectiveofficial" target="_blank" class="text-gray-400 hover:text-red-400 transition" title="YouTube Channel">
-                    <i data-lucide="youtube" class="w-5 h-5"></i>
-                </a>
-                <!-- Corrected Mailto Link -->
-                <a href="mailto:mr.kpai.official@gmail.com" class="text-gray-400 hover:text-blue-400 transition" title="Email">
-                    <i data-lucide="mail" class="w-5 h-5"></i>
-                </a>
-            </div>
-        </footer>
-
+    <h2>Hardware & IoT Stack</h2>
+    <div class="tech-stack">
+        <div class="card">ESP32 Microcontroller</div>
+        <div class="card">Capacitive Moisture Sensors</div>
+        <div class="card">MPPT Charge Controller</div>
+        <div class="card">12V DC Pump System</div>
     </div>
 
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
+    <h2>Scientific References (2025-2026)</h2>
+    <ul>
+        <li>
+            <strong>Sabu et al. (2025):</strong> Statistical proof identifying Unpredictable Weather and Labour Shortages as the primary constraints for Kerala farmers.<br>
+            <a href="https://www.researchgate.net/publication/399108381_CONSTRAINTS_AFFECTING_THE_ADOPTION_OF_LOW-CARBON_AGRICULTURAL_TECHNOLOGIES_IN_KERALA" target="_blank">View Research Paper</a>
+        </li>
+        <li>
+            <strong>Govt. CREEA Report (2025):</strong> Official state data showing 94% of Kerala’s cropped area is climate-vulnerable.<br>
+            <a href="https://india.mongabay.com/short-article/2025/07/kerala-unveils-plan-to-tackle-climate-risks-and-build-resilient-agriculture/" target="_blank">View Govt. Summary</a>
+        </li>
+        <li>
+            <strong>Sachu Sara Sabu et al. (2025):</strong> Research proving erratic rainfall variability in June and July has made traditional rain-fed farming unreliable.<br>
+            <a href="https://www.researchgate.net/publication/398949545_Erratic_Rainfall_and_its_Upshot_on_Rice_Production_in_Kerala" target="_blank">View Impact Study</a>
+        </li>
+        <li>
+            <strong>Farm Information Bureau (2025/26):</strong> Technical journals documenting crop losses in Kerala due to poor moisture management and fungal disease.<br>
+            <a href="http://www.fibkerala.gov.in/sites/default/files/inline-files/E-Journal%20%28October%29.pdf" target="_blank">View FIB Journal</a>
+        </li>
+    </ul>
 
-        // Simple JavaScript for smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+    <div class="footer">
+        Submitted for Multi-Disciplinary Course: IoT Based Smart Farming | 2026
+    </div>
+</div>
 
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        document.body.classList.add('loaded');
-    </script>
 </body>
 </html>
-
