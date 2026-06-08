@@ -7,125 +7,190 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-    --bg-main: #0b111e;
-    --bg-card: rgba(30, 41, 59, 0.5);
-    --border-color: rgba(255, 255, 255, 0.08);
+    --bg-main: #070a13;
+    --bg-card: rgba(15, 23, 42, 0.4);
+    --border-color: rgba(255, 255, 255, 0.06);
     --text-primary: #f8fafc;
     --text-secondary: #94a3b8;
     --accent: #3b82f6;
-    --accent-glow: rgba(59, 130, 246, 0.15);
+    --accent-glow: rgba(59, 130, 246, 0.1);
+    --physics-purple: #a855f7;
 }
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 body {
     background: var(--bg-main);
     color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', sans-serif;
     line-height: 1.7;
     overflow-x: hidden;
 }
 
-/* Modern Gradient Hero Mesh */
+/* Cosmic Background Elements */
+body::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
 header {
     text-align: center;
-    padding: 100px 20px;
-    background: radial-gradient(circle at top, rgba(37, 99, 235, 0.15) 0%, transparent 60%);
+    padding: 120px 20px 80px;
+    background: radial-gradient(circle at top, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
     position: relative;
 }
 
-header::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
-}
-
 header h1 {
-    font-size: 3.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3.8rem;
     font-weight: 700;
-    letter-spacing: -0.05em;
-    background: linear-gradient(135deg, #fff 30%, #93c5fd 100%);
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, #fff 40%, #93c5fd 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 }
 
 header p {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     color: var(--text-secondary);
     font-weight: 500;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .container {
     width: 90%;
-    max-width: 900px;
+    max-width: 950px;
     margin: auto;
-    padding: 60px 0;
+    padding-bottom: 100px;
 }
 
 section {
-    margin-bottom: 60px;
+    margin-bottom: 70px;
 }
 
 h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: -0.02em;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 24px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
-/* Modern Glassmorphic Cards */
+h2::before {
+    content: '//';
+    color: var(--accent);
+    font-weight: 400;
+}
+
+/* Cards */
 .card {
     background: var(--bg-card);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--border-color);
-    padding: 28px;
-    border-radius: 16px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 30px;
+    border-radius: 20px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(59, 130, 246, 0.3);
-    box-shadow: 0 12px 30px var(--accent-glow);
+    transform: translateY(-5px);
+    border-color: rgba(59, 130, 246, 0.25);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px var(--accent-glow);
 }
 
-.card h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 6px;
+/* Content Creator Grid Layout */
+.creator-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
 }
 
-.card p {
+@media (max-width: 768px) {
+    .creator-grid { grid-template-columns: 1fr; }
+}
+
+/* Stat Counters */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.stat-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 14px;
+    text-align: center;
+}
+
+.stat-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #60a5fa;
+    display: block;
+}
+
+.stat-label {
+    font-size: 0.85rem;
     color: var(--text-secondary);
 }
 
-/* Dynamic Grids */
-.grid-2 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+/* Physics Generator Box */
+.interactive-box {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+    border: 1px solid rgba(168, 85, 247, 0.2);
 }
 
-/* Sleek Pill-based Skills */
+.interactive-box p {
+    font-style: italic;
+    min-height: 54px;
+}
+
+.btn-cosmic {
+    background: rgba(168, 85, 247, 0.15);
+    color: #c084fc;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    padding: 10px 20px;
+    border-radius: 100px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-top: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.btn-cosmic:hover {
+    background: var(--physics-purple);
+    color: white;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+}
+
+/* Modern Pill Badges */
 .skills {
     display: flex;
     flex-wrap: wrap;
@@ -133,10 +198,10 @@ h2 {
 }
 
 .skill {
-    background: rgba(59, 130, 246, 0.08);
-    color: #60a5fa;
-    border: 1px solid rgba(59, 130, 246, 0.2);
-    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    padding: 8px 18px;
     border-radius: 100px;
     font-size: 0.9rem;
     font-weight: 500;
@@ -144,29 +209,31 @@ h2 {
 }
 
 .skill:hover {
-    background: var(--accent);
-    color: white;
-    transform: translateY(-2px);
+    border-color: var(--accent);
+    color: #60a5fa;
+    background: rgba(59, 130, 246, 0.05);
 }
 
-/* Links & Contact Info */
+/* Links */
 a {
     color: var(--accent);
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
 }
 
 a:hover {
     color: #60a5fa;
-    text-decoration: underline;
 }
 
-.contact-info p {
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.arrow {
+    transition: transform 0.2s ease;
+}
+
+a:hover .arrow {
+    transform: translate(2px, -2px);
 }
 
 footer {
@@ -176,73 +243,134 @@ footer {
     font-size: 0.9rem;
     border-top: 1px solid var(--border-color);
 }
-
-/* Mobile responsive adjustments */
-@media (max-width: 600px) {
-    header h1 { font-size: 2.5rem; }
-    header p { font-size: 1rem; }
-    .card { padding: 20px; }
-}
 </style>
 </head>
 <body>
 
 <header>
     <h1>Krishna Pai V</h1>
-    <p>BSc Physics Student &bull; Physics Enthusiast &bull; Content Creator</p>
+    <p>BSc Physics Student &bull; Science Communicator &bull; Creator of SciSpective</p>
 </header>
 
 <div class="container">
 
-<section>
-    <h2>About Me</h2>
-    <div class="card">
-        <p>
-            Hello! I'm Krishna Pai V, a BSc Physics student at The Cochin College.
-            I am passionate about Physics, Astrophysics, Science Communication,
-            and creating educational content through my YouTube channel, SciSpective.
-        </p>
-    </div>
-</section>
-
-<section>
-    <h2>Education & Experience</h2>
-    <div class="grid-2">
+    <!-- About Section -->
+    <section>
+        <h2>About Me</h2>
         <div class="card">
-            <h3>BSc Physics</h3>
-            <p>The Cochin College</p>
+            <p>
+                Hello! I'm Krishna Pai V, a BSc Physics student at The Cochin College. 
+                I bridge the gap between complex academic concepts and everyday curiosity through 
+                astrophysics research and modern digital science communication.
+            </p>
         </div>
-        <div class="card">
-            <h3>SciSpective</h3>
-            <p>Founder & Content Creator</p>
+    </section>
+
+    <!-- Creator & Education Dashboard Grid -->
+    <section>
+        <h2>Work & Education</h2>
+        <div class="creator-grid">
+            <div class="card">
+                <span style="color: var(--physics-purple); font-size: 0.8rem; font-weight:700; uppercase; letter-spacing:0.1em;">YOUTUBE CHANNEL</span>
+                <h3 style="font-size:1.5rem; margin: 4px 0 12px 0;">SciSpective</h3>
+                <p style="margin-bottom: 20px;">
+                    An educational portal where complex physics frameworks and observational astronomy 
+                    phenomena are translated into visual storytelling.
+                </p>
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <span class="stat-number">Active</span>
+                        <span class="stat-label">Videos</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-number">Physics</span>
+                        <span class="stat-label">Focus</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <span style="color: var(--accent); font-size: 0.8rem; font-weight:700; uppercase; letter-spacing:0.1em;">ACADEMICS</span>
+                    <h3 style="font-size:1.4rem; margin: 4px 0 6px 0;">BSc Physics</h3>
+                    <p>The Cochin College</p>
+                </div>
+                <div style="padding-top: 20px; font-size: 0.9rem; color: var(--text-secondary); border-top: 1px solid var(--border-color);">
+                    Focusing on Quantum Mechanics, Relativity & Astrophysics modules.
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section>
-    <h2>Skills</h2>
-    <div class="skills">
-        <div class="skill">Physics</div>
-        <div class="skill">Astrophysics</div>
-        <div class="skill">Science Communication</div>
-        <div class="skill">Research</div>
-        <div class="skill">Content Creation</div>
-    </div>
-</section>
+    <!-- Interactive Space Fact Generator -->
+    <section>
+        <h2>Cosmic Engine</h2>
+        <div class="card interactive-box">
+            <h3 style="margin-bottom: 8px; font-size:1.1rem; color:#c084fc;">Quantum & Astro Fact Generator</h3>
+            <p id="fact-display">Click the button below to retrieve a fragment of cosmic data from the engine.</p>
+            <button class="btn-cosmic" onclick="generateFact()">
+                <span>Generate Fact</span> 
+                <span style="font-size:1.1rem;">&bull;</span>
+            </button>
+        </div>
+    </section>
 
-<section>
-    <h2>Contact</h2>
-    <div class="card contact-info">
-        <p><strong>Email:</strong> <a href="mailto:your-email@example.com">your-email@example.com</a></p>
-        <p><strong>YouTube:</strong> <a href="https://www.youtube.com/@scispectiveofficial" target="_blank">SciSpective &#8599;</a></p>
-    </div>
-</section>
+    <!-- Skills Section -->
+    <section>
+        <h2>Core Focus Areas</h2>
+        <div class="skills">
+            <div class="skill">Theoretical Physics</div>
+            <div class="skill">Astrophysics</div>
+            <div class="skill">Science Communication</div>
+            <div class="skill">Media Production</div>
+            <div class="skill">Research Methodologies</div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section>
+        <h2>Connect</h2>
+        <div class="card" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+            <div>
+                <p style="color: var(--text-secondary); font-size: 0.85rem;">Inquiries & Collaborations</p>
+                <a href="mailto:your-email@example.com" style="font-size: 1.1rem; margin-top: 4px;">your-email@example.com <span class="arrow">→</span></a>
+            </div>
+            <div>
+                <p style="color: var(--text-secondary); font-size: 0.85rem;">Watch Educational Content</p>
+                <a href="https://www.youtube.com/@scispectiveofficial" target="_blank" style="font-size: 1.1rem; margin-top: 4px; color: var(--physics-purple);">SciSpective YouTube <span class="arrow">→</span></a>
+            </div>
+        </div>
+    </section>
 
 </div>
 
 <footer>
-    <p>&copy; 2026 Krishna Pai V &bull; Built with precision</p>
+    <p>&copy; 2026 Krishna Pai V &bull; Simulating reality one line at a time.</p>
 </footer>
+
+<script>
+const facts = [
+    "Light takes roughly 8 minutes and 20 seconds to travel from the Sun to the Earth.",
+    "Neutron stars are so dense that a single teaspoon of their material would weigh around 6 billion tons.",
+    "In space, two pieces of the same type of metal will permanently bond if they touch. This is called Cold Welding.",
+    "Time moves slower near massive objects due to Gravitational Time Dilation, a core consequence of Einstein's General Relativity.",
+    "The observable universe contains an estimated 2 trillion galaxies, each holding billions of stellar systems."
+];
+
+function generateFact() {
+    const display = document.getElementById('fact-display');
+    const randomIdx = Math.floor(Math.random() * facts.length);
+    
+    // Add a quick fade out effect using pure JavaScript
+    display.style.opacity = 0;
+    setTimeout(() => {
+        display.innerText = facts[randomIdx];
+        display.style.opacity = 1;
+    }, 200);
+}
+// Set transitions dynamically on style sheet initialization 
+document.getElementById('fact-display').style.transition = 'opacity 0.2s ease';
+</script>
 
 </body>
 </html>
