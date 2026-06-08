@@ -5,79 +5,183 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Krishna Pai V | Portfolio</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
+:root {
+    --bg-main: #0b111e;
+    --bg-card: rgba(30, 41, 59, 0.5);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent: #3b82f6;
+    --accent-glow: rgba(59, 130, 246, 0.15);
+}
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-body{
-    background:#0f172a;
-    color:white;
-    line-height:1.6;
+body {
+    background: var(--bg-main);
+    color: var(--text-primary);
+    line-height: 1.7;
+    overflow-x: hidden;
 }
 
-header{
-    text-align:center;
-    padding:60px 20px;
-    background:linear-gradient(135deg,#1e3a8a,#2563eb);
+/* Modern Gradient Hero Mesh */
+header {
+    text-align: center;
+    padding: 100px 20px;
+    background: radial-gradient(circle at top, rgba(37, 99, 235, 0.15) 0%, transparent 60%);
+    position: relative;
 }
 
-header h1{
-    font-size:3rem;
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-color), transparent);
 }
 
-header p{
-    font-size:1.2rem;
-    margin-top:10px;
+header h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    background: linear-gradient(135deg, #fff 30%, #93c5fd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
 }
 
-.container{
-    width:90%;
-    max-width:1000px;
-    margin:auto;
-    padding:40px 0;
+header p {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    font-weight: 500;
 }
 
-section{
-    margin-bottom:50px;
+.container {
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    padding: 60px 0;
 }
 
-h2{
-    color:#60a5fa;
-    margin-bottom:15px;
+section {
+    margin-bottom: 60px;
 }
 
-.card{
-    background:#1e293b;
-    padding:20px;
-    border-radius:12px;
-    margin-bottom:15px;
+h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.skills{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
+/* Modern Glassmorphic Cards */
+.card {
+    background: var(--bg-card);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--border-color);
+    padding: 28px;
+    border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.skill{
-    background:#2563eb;
-    padding:10px 15px;
-    border-radius:20px;
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 12px 30px var(--accent-glow);
 }
 
-a{
-    color:#60a5fa;
-    text-decoration:none;
+.card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 6px;
 }
 
-footer{
-    text-align:center;
-    padding:20px;
-    background:#1e293b;
+.card p {
+    color: var(--text-secondary);
+}
+
+/* Dynamic Grids */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* Sleek Pill-based Skills */
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill {
+    background: rgba(59, 130, 246, 0.08);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.skill:hover {
+    background: var(--accent);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Links & Contact Info */
+a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #60a5fa;
+    text-decoration: underline;
+}
+
+.contact-info p {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 600px) {
+    header h1 { font-size: 2.5rem; }
+    header p { font-size: 1rem; }
+    .card { padding: 20px; }
 }
 </style>
 </head>
@@ -85,7 +189,7 @@ footer{
 
 <header>
     <h1>Krishna Pai V</h1>
-    <p>BSc Physics Student | Physics Enthusiast | Content Creator</p>
+    <p>BSc Physics Student &bull; Physics Enthusiast &bull; Content Creator</p>
 </header>
 
 <div class="container">
@@ -102,10 +206,16 @@ footer{
 </section>
 
 <section>
-    <h2>Education</h2>
-    <div class="card">
-        <h3>BSc Physics</h3>
-        <p>The Cochin College</p>
+    <h2>Education & Experience</h2>
+    <div class="grid-2">
+        <div class="card">
+            <h3>BSc Physics</h3>
+            <p>The Cochin College</p>
+        </div>
+        <div class="card">
+            <h3>SciSpective</h3>
+            <p>Founder & Content Creator</p>
+        </div>
     </div>
 </section>
 
@@ -121,28 +231,17 @@ footer{
 </section>
 
 <section>
-    <h2>Projects</h2>
-    <div class="card">
-        <h3>SciSpective</h3>
-        <p>
-            Educational science content focusing on Physics, Astronomy,
-            and scientific concepts explained in a simple manner.
-        </p>
-    </div>
-</section>
-
-<section>
     <h2>Contact</h2>
-    <div class="card">
-        <p>Email: your-email@example.com</p>
-        <p>YouTube: <a href="https://www.youtube.com/@scispectiveofficial" target="_blank">SciSpective</a></p>
+    <div class="card contact-info">
+        <p><strong>Email:</strong> <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+        <p><strong>YouTube:</strong> <a href="https://www.youtube.com/@scispectiveofficial" target="_blank">SciSpective &#8599;</a></p>
     </div>
 </section>
 
 </div>
 
 <footer>
-    <p>© 2026 Krishna Pai V | All Rights Reserved</p>
+    <p>&copy; 2026 Krishna Pai V &bull; Built with precision</p>
 </footer>
 
 </body>
