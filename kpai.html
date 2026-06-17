@@ -1,88 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Physics Department Team</title>
+    <title>Guess the Number Game</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f4f6f9;
-            margin: 0;
-            padding: 20px;
-        }
-
-        h1 {
             text-align: center;
-            color: #003366;
+            margin-top: 100px;
+            background-color: #f0f8ff;
         }
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-        }
-
-        .card {
+        .game-box {
             background: white;
+            width: 350px;
+            margin: auto;
             padding: 20px;
-            margin: 15px 0;
             border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px gray;
         }
 
-        .name {
-            color: #004080;
-            font-size: 22px;
+        input {
+            padding: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 8px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #message {
+            margin-top: 15px;
             font-weight: bold;
-        }
-
-        .description {
-            margin-top: 8px;
-            color: #555;
-            line-height: 1.6;
         }
     </style>
 </head>
 <body>
 
-    <h1>The Cochin College - Department of Physics</h1>
+<div class="game-box">
+    <h2>🎮 Guess the Number</h2>
+    <p>I am thinking of a number between 1 and 100.</p>
 
-    <div class="container">
+    <input type="number" id="guess" placeholder="Enter number">
+    <button onclick="checkGuess()">Guess</button>
 
-        <div class="card">
-            <div class="name">Aromal M A</div>
-            <div class="description">
-                A dedicated Physics student known for his analytical thinking,
-                teamwork, and enthusiasm for scientific exploration.
-            </div>
-        </div>
+    <p id="message"></p>
+    <p>Attempts: <span id="attempts">0</span></p>
+</div>
 
-        <div class="card">
-            <div class="name">Gishnu Shaiju</div>
-            <div class="description">
-                Passionate about learning and innovation, Gishnu actively
-                participates in academic and extracurricular activities.
-            </div>
-        </div>
+<script>
+    let secretNumber = Math.floor(Math.random() * 100) + 1;
+    let attempts = 0;
 
-        <div class="card">
-            <div class="name">Mohamed Fizan K S</div>
-            <div class="description">
-                A curious learner with strong problem-solving abilities and
-                a keen interest in understanding the principles of physics.
-            </div>
-        </div>
+    function checkGuess() {
+        let guess = Number(document.getElementById("guess").value);
+        attempts++;
+        document.getElementById("attempts").innerText = attempts;
 
-        <div class="card">
-            <div class="name">Krishna Pai V</div>
-            <div class="description">
-                Physics enthusiast, science communicator, and creator of the
-                SciSpective platform. Interested in astrophysics, research,
-                and sharing scientific knowledge with a wider audience.
-            </div>
-        </div>
-
-    </div>
+        if (guess === secretNumber) {
+            document.getElementById("message").innerHTML =
+                "🎉 Correct! The number was " + secretNumber;
+        } else if (guess < secretNumber) {
+            document.getElementById("message").innerHTML =
+                "📈 Too low! Try again.";
+        } else {
+            document.getElementById("message").innerHTML =
+                "📉 Too high! Try again.";
+        }
+    }
+</script>
 
 </body>
 </html>
