@@ -1,74 +1,217 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Guess the Number Game</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 100px;
-            background-color: #f0f8ff;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Racing Game</title>
+<style>
+    body{
+        margin:0;
+        overflow:hidden;
+        background:#222;
+        font-family:Arial,sans-serif;
+        text-align:center;
+        color:white;
+    }
 
-        .game-box {
-            background: white;
-            width: 350px;
-            margin: auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px gray;
-        }
+    #gameArea{
+        width:400px;
+        height:700px;
+        margin:auto;
+        position:relative;
+        background:#555;
+        overflow:hidden;
+        border:4px solid white;
+    }
 
-        input {
-            padding: 8px;
-            font-size: 16px;
-        }
+    .roadLine{
+        position:absolute;
+        width:10px;
+        height:100px;
+        background:white;
+        left:195px;
+    }
 
-        button {
-            padding: 8px 15px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+    #player{
+        position:absolute;
+        width:50px;
+        height:90px;
+        background:red;
+        border-radius:10px;
+        bottom:20px;
+        left:175px;
+    }
 
-        #message {
-            margin-top: 15px;
-            font-weight: bold;
-        }
-    </style>
+    .enemy{
+        position:absolute;
+        width:50px;
+        height:90px;
+        background:yellow;
+        border-radius:10px;
+    }
+
+    #score{
+        font-size:24px;
+        margin:10px;
+    }
+
+    #startScreen{
+        position:absolute;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.9);
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+        z-index:10;
+    }
+
+    button{
+        padding:10px 20px;
+        font-size:20px;
+        cursor:pointer;
+    }
+</style>
 </head>
 <body>
 
-<div class="game-box">
-    <h2>🎮 Guess the Number</h2>
-    <p>I am thinking of a number between 1 and 100.</p>
+<h2>🚗 Car Racing Game</h2>
+<div id="score">Score: 0</div>
 
-    <input type="number" id="guess" placeholder="Enter number">
-    <button onclick="checkGuess()">Guess</button>
-
-    <p id="message"></p>
-    <p>Attempts: <span id="attempts">0</span></p>
+<div id="gameArea">
+    <div id="startScreen">
+        <h1>Car Racing Game</h1>
+        <p>Use ← → Arrow Keys</p>
+        <button onclick="startGame()">Start Game</button>
+    </div>
 </div>
 
 <script>
-    let secretNumber = Math.floor(Math.random() * 100) + 1;
-    let attempts = 0;
+const gameArea = document.getElementById("gameArea");
+const scoreDisplay = document.getElementById("score");
+const startScreen = document.getElementById("startScreen");
 
-    function checkGuess() {
-        let guess = Number(document.getElementById("guess").value);
-        attempts++;
-        document.getElementById("attempts").innerText = attempts;
+let keys = {};
+let score = 0;
+let gameSpeed = 5;
+let animation;
+let player;
 
-        if (guess === secretNumber) {
-            document.getElementById("message").innerHTML =
-                "🎉 Correct! The number was " + secretNumber;
-        } else if (guess < secretNumber) {
-            document.getElementById("message").innerHTML =
-                "📈 Too low! Try again.";
-        } else {
-            document.getElementById("message").innerHTML =
-                "📉 Too high! Try again.";
-        }
+document.addEventListener("keydown", e => keys[e.key] = true);
+document.addEventListener("keyup", e => keys[e.key] = false);
+
+function startGame(){
+    startScreen.style.display = "none";
+    gameArea.innerHTML = "";
+
+    score = 0;
+
+    for(let i=0;i<5;i++){
+        let line = document.createElement("div");
+        line.classList.add("roadLine");
+        line.y = i * 150;
+        line.style.top = line.y + "px";
+        gameArea.appendChild(line);
     }
+
+    player = document.createElement("div");
+    player.id = "player";
+    gameArea.appendChild(player);
+
+    player.x = 175;
+    player.y = 600;
+
+    for(let i=0;i<3;i++){
+        let enemy = document.createElement("div");
+        enemy.classList.add("enemy");
+        enemy.y = (i+1) * -250;
+        enemy.x = Math.floor(Math.random()*350);
+        enemy.style.left = enemy.x + "px";
+        enemy.style.top = enemy.y + "px";
+        gameArea.appendChild(enemy);
+    }
+
+    gameLoop();
+}
+
+function moveLines(){
+    let lines = document.querySelectorAll(".roadLine");
+
+    lines.forEach(line=>{
+        line.y += gameSpeed;
+
+        if(line.y > 700){
+            line.y = -100;
+        }
+
+        line.style.top = line.y + "px";
+    });
+}
+
+function isCollide(a,b){
+    let aRect = a.getBoundingClientRect();
+    let bRect = b.getBoundingClientRect();
+
+    return !(
+        aRect.bottom < bRect.top ||
+        aRect.top > bRect.bottom ||
+        aRect.right < bRect.left ||
+        aRect.left > bRect.right
+    );
+}
+
+function moveEnemies(){
+    let enemies = document.querySelectorAll(".enemy");
+
+    enemies.forEach(enemy=>{
+        if(isCollide(player, enemy)){
+            endGame();
+        }
+
+        enemy.y += gameSpeed;
+
+        if(enemy.y > 700){
+            enemy.y = -200;
+            enemy.x = Math.floor(Math.random()*350);
+            score += 10;
+        }
+
+        enemy.style.top = enemy.y + "px";
+        enemy.style.left = enemy.x + "px";
+    });
+}
+
+function gameLoop(){
+    moveLines();
+    moveEnemies();
+
+    if(keys["ArrowLeft"] && player.x > 0){
+        player.x -= 7;
+    }
+
+    if(keys["ArrowRight"] && player.x < 350){
+        player.x += 7;
+    }
+
+    player.style.left = player.x + "px";
+
+    score++;
+    scoreDisplay.innerHTML = "Score: " + score;
+
+    animation = requestAnimationFrame(gameLoop);
+}
+
+function endGame(){
+    cancelAnimationFrame(animation);
+
+    startScreen.innerHTML = `
+        <h1>💥 Game Over</h1>
+        <h2>Score: ${score}</h2>
+        <button onclick="location.reload()">Play Again</button>
+    `;
+    startScreen.style.display = "flex";
+}
 </script>
 
 </body>
