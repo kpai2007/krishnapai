@@ -3,216 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Car Racing Game</title>
+<title>Wedding Invitation - Fizan & Ayesha</title>
 <style>
     body{
         margin:0;
-        overflow:hidden;
-        background:#222;
-        font-family:Arial,sans-serif;
+        font-family: 'Georgia', serif;
+        background: linear-gradient(135deg,#f8f3e7,#fff);
+        color:#333;
         text-align:center;
-        color:white;
     }
-
-    #gameArea{
-        width:400px;
-        height:700px;
-        margin:auto;
-        position:relative;
-        background:#555;
-        overflow:hidden;
-        border:4px solid white;
-    }
-
-    .roadLine{
-        position:absolute;
-        width:10px;
-        height:100px;
+    .container{
+        max-width:800px;
+        margin:40px auto;
+        padding:40px;
         background:white;
-        left:195px;
+        border-radius:20px;
+        box-shadow:0 0 20px rgba(0,0,0,0.1);
     }
-
-    #player{
-        position:absolute;
-        width:50px;
-        height:90px;
-        background:red;
+    h1{
+        color:#0d6b4f;
+        font-size:3rem;
+        margin-bottom:10px;
+    }
+    h2{
+        color:#b8860b;
+        font-size:2rem;
+    }
+    .arabic{
+        font-size:2rem;
+        color:#0d6b4f;
+        margin-bottom:20px;
+    }
+    .details{
+        font-size:1.2rem;
+        line-height:1.8;
+    }
+    .venue{
+        margin-top:25px;
+        padding:15px;
+        background:#f5f5f5;
         border-radius:10px;
-        bottom:20px;
-        left:175px;
     }
-
-    .enemy{
-        position:absolute;
-        width:50px;
-        height:90px;
-        background:yellow;
-        border-radius:10px;
-    }
-
-    #score{
-        font-size:24px;
-        margin:10px;
-    }
-
-    #startScreen{
-        position:absolute;
-        width:100%;
-        height:100%;
-        background:rgba(0,0,0,0.9);
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        flex-direction:column;
-        z-index:10;
-    }
-
-    button{
-        padding:10px 20px;
-        font-size:20px;
-        cursor:pointer;
+    footer{
+        margin-top:30px;
+        color:#666;
+        font-style:italic;
     }
 </style>
 </head>
 <body>
 
-<h2>🚗 Car Racing Game</h2>
-<div id="score">Score: 0</div>
+<div class="container">
+    <div class="arabic">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
 
-<div id="gameArea">
-    <div id="startScreen">
-        <h1>Car Racing Game</h1>
-        <p>Use ← → Arrow Keys</p>
-        <button onclick="startGame()">Start Game</button>
+    <h1>Wedding Invitation</h1>
+
+    <p>With the blessings of Allah (SWT),</p>
+
+    <p class="details">
+        We cordially invite you and your family to grace the wedding ceremony of
+    </p>
+
+    <h2>Mohamed Fizan K. S.</h2>
+    <p>&</p>
+    <h2>Ayesha</h2>
+
+    <p class="details">
+        Your presence and blessings will make this occasion truly memorable.
+    </p>
+
+    <div class="venue">
+        <h3>Venue</h3>
+        <p><strong>Shamiana Hall</strong></p>
+        <p>Panayapilly</p>
     </div>
+
+    <footer>
+        We look forward to celebrating this joyous occasion with you.
+    </footer>
 </div>
-
-<script>
-const gameArea = document.getElementById("gameArea");
-const scoreDisplay = document.getElementById("score");
-const startScreen = document.getElementById("startScreen");
-
-let keys = {};
-let score = 0;
-let gameSpeed = 5;
-let animation;
-let player;
-
-document.addEventListener("keydown", e => keys[e.key] = true);
-document.addEventListener("keyup", e => keys[e.key] = false);
-
-function startGame(){
-    startScreen.style.display = "none";
-    gameArea.innerHTML = "";
-
-    score = 0;
-
-    for(let i=0;i<5;i++){
-        let line = document.createElement("div");
-        line.classList.add("roadLine");
-        line.y = i * 150;
-        line.style.top = line.y + "px";
-        gameArea.appendChild(line);
-    }
-
-    player = document.createElement("div");
-    player.id = "player";
-    gameArea.appendChild(player);
-
-    player.x = 175;
-    player.y = 600;
-
-    for(let i=0;i<3;i++){
-        let enemy = document.createElement("div");
-        enemy.classList.add("enemy");
-        enemy.y = (i+1) * -250;
-        enemy.x = Math.floor(Math.random()*350);
-        enemy.style.left = enemy.x + "px";
-        enemy.style.top = enemy.y + "px";
-        gameArea.appendChild(enemy);
-    }
-
-    gameLoop();
-}
-
-function moveLines(){
-    let lines = document.querySelectorAll(".roadLine");
-
-    lines.forEach(line=>{
-        line.y += gameSpeed;
-
-        if(line.y > 700){
-            line.y = -100;
-        }
-
-        line.style.top = line.y + "px";
-    });
-}
-
-function isCollide(a,b){
-    let aRect = a.getBoundingClientRect();
-    let bRect = b.getBoundingClientRect();
-
-    return !(
-        aRect.bottom < bRect.top ||
-        aRect.top > bRect.bottom ||
-        aRect.right < bRect.left ||
-        aRect.left > bRect.right
-    );
-}
-
-function moveEnemies(){
-    let enemies = document.querySelectorAll(".enemy");
-
-    enemies.forEach(enemy=>{
-        if(isCollide(player, enemy)){
-            endGame();
-        }
-
-        enemy.y += gameSpeed;
-
-        if(enemy.y > 700){
-            enemy.y = -200;
-            enemy.x = Math.floor(Math.random()*350);
-            score += 10;
-        }
-
-        enemy.style.top = enemy.y + "px";
-        enemy.style.left = enemy.x + "px";
-    });
-}
-
-function gameLoop(){
-    moveLines();
-    moveEnemies();
-
-    if(keys["ArrowLeft"] && player.x > 0){
-        player.x -= 7;
-    }
-
-    if(keys["ArrowRight"] && player.x < 350){
-        player.x += 7;
-    }
-
-    player.style.left = player.x + "px";
-
-    score++;
-    scoreDisplay.innerHTML = "Score: " + score;
-
-    animation = requestAnimationFrame(gameLoop);
-}
-
-function endGame(){
-    cancelAnimationFrame(animation);
-
-    startScreen.innerHTML = `
-        <h1>💥 Game Over</h1>
-        <h2>Score: ${score}</h2>
-        <button onclick="location.reload()">Play Again</button>
-    `;
-    startScreen.style.display = "flex";
-}
-</script>
 
 </body>
 </html>
