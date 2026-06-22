@@ -3,190 +3,159 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fizan ❤️ Ayesha | Wedding Invitation</title>
+<title>Stack Game</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
 body{
-    font-family: 'Georgia', serif;
-    min-height:100vh;
+    margin:0;
     overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(-45deg,#0b3d2e,#145a32,#1e8449,#0b3d2e);
-    background-size:400% 400%;
-    animation:bgMove 12s ease infinite;
-}
-
-@keyframes bgMove{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
-}
-
-.card{
-    width:90%;
-    max-width:850px;
-    padding:40px;
-    text-align:center;
+    background:#111;
+    font-family:Arial,sans-serif;
     color:white;
-    background:rgba(255,255,255,0.12);
-    backdrop-filter:blur(12px);
-    border:1px solid rgba(255,255,255,0.2);
-    border-radius:25px;
-    box-shadow:0 0 40px rgba(0,0,0,0.3);
-    animation:fadeIn 2s ease;
+    text-align:center;
+}
+
+h1{
+    position:absolute;
+    width:100%;
+    top:10px;
     z-index:10;
 }
 
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-.arabic{
-    font-size:2rem;
-    color:#ffd700;
-    margin-bottom:15px;
-}
-
-.title{
-    font-size:3rem;
-    color:#fff;
-    margin-bottom:20px;
-}
-
-.names{
-    font-size:4rem;
-    color:#ffd700;
-    font-weight:bold;
-    text-shadow:0 0 15px #ffd700;
-    animation:glow 2s infinite alternate;
-}
-
-@keyframes glow{
-    from{
-        text-shadow:0 0 10px #ffd700;
-    }
-    to{
-        text-shadow:0 0 30px #ffd700,0 0 50px #ffd700;
-    }
-}
-
-.heart{
-    font-size:2.5rem;
-    animation:beat 1.2s infinite;
-}
-
-@keyframes beat{
-    0%,100%{transform:scale(1);}
-    50%{transform:scale(1.3);}
-}
-
-.text{
-    font-size:1.2rem;
-    margin:20px 0;
-    line-height:1.8;
-}
-
-.venue{
-    margin-top:25px;
-    padding:20px;
-    border-radius:15px;
-    background:rgba(255,255,255,0.1);
-}
-
-.venue h2{
-    color:#ffd700;
-}
-
-.footer{
-    margin-top:20px;
-    font-style:italic;
-    color:#eee;
-}
-
-/* Floating stars */
-.star{
+#score{
     position:absolute;
-    color:#fff;
-    animation:float linear infinite;
+    top:60px;
+    width:100%;
+    font-size:24px;
+    z-index:10;
 }
 
-@keyframes float{
-    from{
-        transform:translateY(100vh);
-        opacity:0;
-    }
-    20%{
-        opacity:1;
-    }
-    to{
-        transform:translateY(-100px);
-        opacity:0;
-    }
+canvas{
+    display:block;
 }
 </style>
 </head>
-
 <body>
 
-<div class="card">
-    <div class="arabic">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
-
-    <div class="title">Wedding Invitation</div>
-
-    <p class="text">
-        With the Blessings of Allah (SWT),<br>
-        We joyfully invite you and your family
-        to celebrate the sacred union of
-    </p>
-
-    <div class="names">Fizan</div>
-
-    <div class="heart">❤️</div>
-
-    <div class="names">Ayesha</div>
-
-    <p class="text">
-        Your presence and prayers will make our
-        special day even more memorable.
-    </p>
-
-    <div class="venue">
-        <h2>📍 Venue</h2>
-        <p>Shamiana Hall</p>
-        <p>Panayapilly</p>
-    </div>
-
-    <div class="footer">
-        "And We created you in pairs." — Quran 78:8
-    </div>
-</div>
+<h1>Stack Game</h1>
+<div id="score">Score: 0</div>
+<canvas id="game"></canvas>
 
 <script>
-for(let i=0;i<60;i++){
-    let star=document.createElement('div');
-    star.className='star';
-    star.innerHTML='✦';
-    star.style.left=Math.random()*100+'vw';
-    star.style.fontSize=(Math.random()*20+10)+'px';
-    star.style.animationDuration=(Math.random()*10+5)+'s';
-    star.style.animationDelay=Math.random()*5+'s';
-    document.body.appendChild(star);
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let stack = [{
+    x: canvas.width/2 - 100,
+    y: canvas.height - 60,
+    width: 200,
+    height: 30
+}];
+
+let current = {
+    x: 0,
+    y: canvas.height - 90,
+    width: 200,
+    height: 30,
+    dir: 1,
+    speed: 5
+};
+
+let score = 0;
+let gameOver = false;
+
+function drawBlock(block,color){
+    ctx.fillStyle=color;
+    ctx.fillRect(block.x,block.y,block.width,block.height);
 }
+
+function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    for(let i=0;i<stack.length;i++){
+        drawBlock(stack[i],`hsl(${i*25},80%,60%)`);
+    }
+
+    if(!gameOver){
+        drawBlock(current,"white");
+    }
+}
+
+function update(){
+    if(gameOver) return;
+
+    current.x += current.speed * current.dir;
+
+    if(current.x <= 0 || current.x + current.width >= canvas.width){
+        current.dir *= -1;
+    }
+}
+
+function placeBlock(){
+
+    if(gameOver) return;
+
+    const top = stack[stack.length-1];
+
+    const overlap =
+        Math.min(current.x + current.width, top.x + top.width)
+        - Math.max(current.x, top.x);
+
+    if(overlap <= 0){
+        gameOver = true;
+        document.getElementById("score").innerHTML =
+        "Game Over! Final Score: " + score + "<br>Refresh to play again";
+        return;
+    }
+
+    current.width = overlap;
+    current.x = Math.max(current.x, top.x);
+
+    stack.push({
+        x: current.x,
+        y: current.y,
+        width: current.width,
+        height: current.height
+    });
+
+    score++;
+    document.getElementById("score").innerText =
+    "Score: " + score;
+
+    current = {
+        x: current.dir === 1 ? 0 : canvas.width-current.width,
+        y: current.y - 30,
+        width: current.width,
+        height: 30,
+        dir: current.dir * -1,
+        speed: current.speed + 0.2
+    };
+
+    if(current.y < 100){
+        for(let block of stack){
+            block.y += 30;
+        }
+        current.y += 30;
+    }
+}
+
+window.addEventListener("click", placeBlock);
+window.addEventListener("keydown", e=>{
+    if(e.code==="Space"){
+        placeBlock();
+    }
+});
+
+function gameLoop(){
+    update();
+    draw();
+    requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
 </script>
 
 </body>
